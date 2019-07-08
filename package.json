@@ -1,0 +1,17 @@
+{
+  "name": "everhour-browser-extension",
+  "version": "1.0.0",
+  "repository": {
+    "url": "https://github.com/everhour/everhour-web"
+  },
+  "scripts": {
+    "build": "gulp release"
+  },
+  "author": "Everhour <ask@everhour.com>",
+  "license": "UNLICENSED",
+  "private": true,
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-zip": "^4.1.0"
+  }
+}

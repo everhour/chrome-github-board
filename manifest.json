@@ -1,0 +1,29 @@
+{
+    "name": "GitHub - Compact Boards (by Everhour)",
+    "short_name": "GitHub - Compact Boards",
+    "description": "Provides compact view to your GitHub boards.",
+    "version": "1.0.0",
+    "homepage_url": "https://everhour.com",
+    "icons": {
+        "128": "logo.png"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://github.com/*/projects/*"
+            ],
+            "js": [
+                "lib/dom-observer.js",
+                "src/github-kanban.js"
+            ],
+            "css": [
+                "src/github-kanban.css"
+            ]
+        }
+    ],
+    "web_accessible_resources": [
+        "src/*.css"
+    ],
+    "manifest_version": 2,
+    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+}
