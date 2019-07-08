@@ -24,7 +24,19 @@
     margin-right: 8px;
 }
 
-.ghcp-on .issue-card.ghcp-important-issue .ghcp-number {
+.ghcp-on .issue-card.ghcp-issue-green .ghcp-number {
+    background: #e6f9e7;
+}
+
+.ghcp-on .issue-card.ghcp-issue-yellow .ghcp-number {
+    background: #f9f7e6;
+}
+
+.ghcp-on .issue-card.ghcp-issue-blue .ghcp-number {
+    background: #e6f3f9;
+}
+
+.ghcp-on .issue-card.ghcp-issue-red .ghcp-number {
     background: #f9e6e6;
 }
 

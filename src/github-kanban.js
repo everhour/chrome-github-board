@@ -1,5 +1,12 @@
 document.body.classList.add('ghcp-on');
 
+const settings = {
+    highlight: [
+        {color: '#f9e6e6', filter: 'label:SUPPORT'},
+        {color: '#e6f3f9', filter: 'label:FTR'},
+    ]
+};
+
 observeChanges('.issue-card, .js-issue-number, .js-project-card-issue-link', () => {
     document.querySelectorAll('.issue-card:not(.ghcp-contains-number)').forEach(card => {
         const number = card.querySelector('.js-issue-number');
@@ -14,13 +21,15 @@ observeChanges('.issue-card, .js-issue-number, .js-project-card-issue-link', () 
         numberSpan.classList.add('ghcp-number');
         numberSpan.innerText = number.innerText;
 
+        settings.highlight.forEach(item => {
+            if (card.querySelector('.issue-card-label[data-card-filter="' + item.filter + '"]')) {
+                numberSpan.style.backgroundColor = item.color;
+            }
+        });
+
         flex.insertBefore(numberSpan, flex.firstChild);
 
         card.classList.add('ghcp-contains-number');
-
-        if (card.querySelector('.issue-card-label[data-card-filter="label:SUPPORT"]')) {
-            card.classList.add('ghcp-important-issue');
-        }
     });
 });
 
