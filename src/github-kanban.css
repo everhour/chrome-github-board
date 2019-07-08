@@ -2,17 +2,18 @@
     Issue Card
  */
 
-.ghcp-on .issue-card .labels,
-.ghcp-on .issue-card .card-octicon,
-.ghcp-on .issue-card .js-project-issue-details-container > small,
-.ghcp-on .issue-card .js-project-issue-details-container > .my-1.v-align-middle,
-.ghcp-on .issue-card .js-project-issue-details-container > button,
-.ghcp-on .issue-card .js-project-issue-details-container > .everhour-list-stat
+.ghcb-on .issue-card .card-octicon, /* issue type icon */
+.ghcb-on .issue-card .js-project-issue-details-container > small, /* issue number and created by */
+.ghcb-on .issue-card .js-project-issue-details-container > .my-1.v-align-middle, /* issue checkboxes progress */
+.ghcb-on.ghcb-hide-labels .issue-card .labels,
+.ghcb-on.ghcb-hide-milestone .issue-card .js-project-issue-details-container > button,
+.ghcb-on.ghcb-hide-everhour .issue-card .js-project-issue-details-container > .everhour-list-stat,
+.ghcb-on.ghcb-hide-assignees .issue-card .AvatarStack
 {
     display: none !important;
 }
 
-.ghcp-on .issue-card .ghcp-number {
+.ghcb-on .issue-card .ghcb-number {
     font-weight: normal !important;
     color: #666 !important;
     font-size: 11px;
@@ -24,31 +25,15 @@
     margin-right: 8px;
 }
 
-.ghcp-on .issue-card.ghcp-issue-green .ghcp-number {
-    background: #e6f9e7;
-}
-
-.ghcp-on .issue-card.ghcp-issue-yellow .ghcp-number {
-    background: #f9f7e6;
-}
-
-.ghcp-on .issue-card.ghcp-issue-blue .ghcp-number {
-    background: #e6f3f9;
-}
-
-.ghcp-on .issue-card.ghcp-issue-red .ghcp-number {
-    background: #f9e6e6;
-}
-
-.ghcp-off .issue-card .ghcp-number {
+.ghcb-off .issue-card .ghcb-number {
     display: none !important;
 }
 
-.ghcp-on .issue-card .js-project-issue-details-container {
+.ghcb-on .issue-card .js-project-issue-details-container {
     padding-left: 0px !important;
 }
 
-.ghcp-on .issue-card {
+.ghcb-on .issue-card {
     margin: 0 !important;
     border-radius: 0 !important;
     border: 0 !important;
@@ -59,22 +44,22 @@
     Note Card
  */
 
-.ghcp-on .issue-card[data-card-type*="note"] small {
+.ghcb-on .issue-card[data-card-type*="note"] small {
     display: none !important;
 }
 
-.ghcp-on .issue-card[data-card-type*="note"] .card-menu-container > summary {
+.ghcb-on .issue-card[data-card-type*="note"] .card-menu-container > summary {
     margin-top: 4px !important;
 }
 
-.ghcp-on .issue-card[data-card-type*="note"] {
+.ghcb-on .issue-card[data-card-type*="note"] {
     background: #f7f7e3 !important;
 }
 
-.ghcp-on .issue-card[data-card-type*="note"] .pl-5.p-2 {
+.ghcb-on .issue-card[data-card-type*="note"] .pl-5.p-2 {
     padding: 4px 0 4px 8px !important;
 }
-.ghcp-on .issue-card[data-card-type*="note"] p {
+.ghcb-on .issue-card[data-card-type*="note"] p {
     margin-bottom: 0 !important;
     font-weight: bold !important;
     font-size: 10px;
@@ -85,13 +70,13 @@
     Column & Header
  */
 
-.ghcp-on .js-project-column .everhour-column-summary,
-.ghcp-on .project-header-controls .everhour-list-summary
+.ghcb-on.ghcb-hide-everhour .js-project-column .everhour-column-summary,
+.ghcb-on.ghcb-hide-everhour .project-header-controls .everhour-list-summary
 {
     display: none !important;
 }
 
-.ghcp-on .js-project-column-cards {
+.ghcb-on .js-project-column-cards {
     padding-left: 0 !important;
     padding-right: 0 !important;
 }

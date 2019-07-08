@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Settings</title>
+    <style>
+        .control {
+            margin-bottom: 8px;
+        }
+
+        .highlight-item {
+            margin-bottom: 8px;
+        }
+
+        input[name="color"] {
+            width: 60px;
+        }
+
+        .color-preview {
+            display: inline-block;
+            height: 19px;
+            width: 19px;
+            margin-right: 4px;
+            vertical-align: top;
+        }
+
+        label {
+            margin-right: 8px;
+        }
+
+        body {
+            padding-bottom: 16px;
+        }
+    </style>
+</head>
+<body>
+
+<h3>Hide:</h3>
+<div class="control">
+    <label><input type="checkbox" name="hide-labels"> Labels</label>
+    <label><input type="checkbox" name="hide-milestone"> Milestone</label>
+    <label><input type="checkbox" name="hide-assignees"> Assignees</label>
+    <label><input type="checkbox" name="hide-everhour"> Everhour</label>
+</div>
+<h3 style="margin-top: 24px">Highlight</h3>
+<div class="highlight"></div>
+<div class="color">
+    <a href="#" class="hl-add-item">Add Item</a>
+</div>
+
+<script src="options.js"></script>
+</body>
+</html>
