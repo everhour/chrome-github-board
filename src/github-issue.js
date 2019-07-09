@@ -1,75 +1,65 @@
-document.body.classList.add('ghci-on');
+document.body.classList.add('ghci-hide-logs');
+document.body.classList.add('ghci-show-pulls');
 
-observeChanges('.ajax-pagination-btn', () => {
-    document.querySelectorAll('.ajax-pagination-btn')
-        .forEach(button => button.click());
-});
+gcbStorage.get().then(settings => {
+    document.body.classList.toggle('ghci-hide-logs', settings.issue.hideLog);
+    document.body.classList.toggle('ghci-show-pulls', settings.issue.showPulls);
 
-const links = {};
-
-observeChanges('h4 a[data-hovercard-type="pull_request"]', () => {
-    document.querySelectorAll('h4 a[data-hovercard-type="pull_request"]')
-        .forEach((link) => {
-            const url = link.getAttribute('href');
-            const issue = link.querySelector('.issue-num').innerHTML.trim();
-            const title = link.textContent.replace(issue, '').trim();
-
-
-            if (links.hasOwnProperty(url) === false) {
-                links[url] = {
-                    url,
-                    title,
-                    issue,
-                }
-            }
+    if (settings.issue.showPulls || settings.issue.hideLog) {
+        // load collapsed items
+        setTimeout(() => {
+            observeChanges('.ajax-pagination-btn', () => {
+                document
+                    .querySelectorAll('.ajax-pagination-btn')
+                    .forEach(button => button.click());
+            })
         });
-
-    const header = document.querySelector('.gh-header-meta');
-    let pullRequests = document.querySelector('.ghci-pull-requests');
-
-    if (!pullRequests) {
-        pullRequests = document.createElement('DIV');
-        pullRequests.classList.add('ghci-pull-requests');
-
-        header.parentNode.appendChild(pullRequests);
     }
 
-    pullRequests.innerHTML = Object.keys(links).length > 0 ? '' : `-`;
+    if (settings.issue.showPulls) {
+        observeChanges('h4 a[data-hovercard-type="pull_request"]', () => {
+            const html = Array
+                .from(document.querySelectorAll('h4 a[data-hovercard-type="pull_request"]'))
+                .map(link => {
+                    const url = link.getAttribute('href');
+                    const matches = url.match(/\/([^\/]*?)\/pull\/(\d+)/);
+                    const isOpen = !!link.parentElement.parentElement.querySelector('.State.State--green');
 
-    Object.keys(links).forEach((key) => {
-        const link = links[key];
+                    return {
+                        url,
+                        title: matches[1] + '#' + matches[2],
+                        state: isOpen ? 'State--purple' : ''
+                    };
+                })
+                .filter((link, index, links) => links.indexOf(link) === index)
+                .map(pull => `
+                    <a href="${pull.url}" target="_blank" class="State ${pull.state}">
+                        ${pull.title}
+                    </a>
+                `)
+                .join(' ');
 
-        pullRequests.innerHTML += `
-            <div class="discussion-item-ref-title">
-                <a href="${link.url}" target="_blank" class="title-link">
-                    <span>${link.title}</span>
-                    <span class="issue-num">${link.issue}</span>
-                </a>
-            </div>
-        `;
-    });
+            const header = document.querySelector('.gh-header-meta');
+            if (header) {
+                renderElement('ghci-pull-requests', html, element => header.appendChild(element));
+            }
 
-    pullRequests.innerHTML = '<div class="ghci-pull-requests-title">Pull requests:</div>' + pullRequests.innerHTML;
+            const stickyHeader = document.querySelector('.sticky-content .meta');
+            if (stickyHeader) {
+                renderElement('ghci-pull-requests-sticky', html, element => stickyHeader.parentElement.insertBefore(element, stickyHeader));
+            }
+        });
+    }
 });
 
-observeChanges('.gh-header-meta:not(.ghci-contains-switcher)', () => {
-    const controls = document.querySelector('.gh-header-meta');
+const renderElement = (className, html, create) => {
+    let element = document.querySelector('.' + className);
 
-    const switcher = document.createElement('DIV');
-    switcher.classList.add('ghci-switcher');
+    if (!element) {
+        element = document.createElement('DIV');
+        element.classList.add(className);
+        create(element);
+    }
 
-    switcher.innerHTML = `
-        <select id="ghci-switcher">
-            <option value="on" selected>Compact: ON</option>
-            <option value="off">Compact: OFF</option>
-        </select>
-    `;
-
-    switcher.onchange = () => {
-        const enabled = document.querySelector('#ghci-switcher').selectedIndex === 0;
-        document.body.classList.toggle('ghci-on', enabled);
-        document.body.classList.toggle('ghci-off', !enabled);
-    };
-
-    controls.appendChild(switcher);
-});
+    element.innerHTML = html;
+};

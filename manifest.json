@@ -21,10 +21,11 @@
             ],
             "js": [
                 "lib/dom-observer.js",
-                "src/github-kanban.js"
+                "lib/storage.js",
+                "src/github-project.js"
             ],
             "css": [
-                "src/github-kanban.css"
+                "src/github-project.css"
             ]
         },
         {
@@ -33,6 +34,7 @@
             ],
             "js": [
                 "lib/dom-observer.js",
+                "lib/storage.js",
                 "src/github-issue.js"
             ],
             "css": [

@@ -1,20 +1,13 @@
-.ghci-on .discussion-item {
-    display: none
+.ghci-show-pulls .gh-header-meta .TableObject-item--primary,
+.ghci-show-pulls .sticky-content .meta {
+    display: none !important;
 }
 
-.ghci-off .ghci-pull-requests {
-    display: none;
+.ghci-hide-logs .discussion-item {
+    display: none !important;
 }
 
-.ghci-on .ghci-pull-requests {
-    display: block;
-    padding-bottom: 24px;
-}
-
-.ghci-pull-requests a {
-    font-weight: 600;
-}
-
-.ghci-pull-requests-title {
-    font-size: 18px;
+.ghci-show-pulls .ghci-pull-requests-sticky .State {
+    font-size: 10px;
+    padding: 0 8px;
 }

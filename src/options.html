@@ -27,15 +27,25 @@
         label {
             margin-right: 8px;
         }
-
         body {
             padding: 0 16px 16px 16px;
+        }
+
+        h2 {
+            padding-bottom: 5px;
+            border-bottom: 1px solid #ffd651;
+        }
+
+        h2:not(:first-child) {
+            margin-top: 30px;
         }
     </style>
 </head>
 <body>
 
-<h3>Hide:</h3>
+<h2>Project View</h2>
+
+<h3>Hide</h3>
 <div class="control">
     <label><input type="checkbox" name="hide-labels"> Labels</label>
     <label><input type="checkbox" name="hide-milestone"> Milestone</label>
@@ -48,6 +58,16 @@
     <a href="#" class="hl-add-item">Add Item</a>
 </div>
 
+<h2>Issue View</h2>
+
+<div class="control">
+    <label><input type="checkbox" name="issue-show-pulls"> Show PRs</label>
+</div>
+<div class="control">
+    <label><input type="checkbox" name="issue-hide-log"> Hide commits, changes and references</label>
+</div>
+
+<script src="../lib/storage.js"></script>
 <script src="options.js"></script>
 </body>
 </html>
