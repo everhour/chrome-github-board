@@ -2,6 +2,10 @@ const save = function() {
     const settings = {
         compact: [],
         highlight: [],
+        issue: {
+            showPulls: document.querySelector('input[name="issue-show-pulls"]').checked,
+            hideLog: document.querySelector('input[name="issue-hide-log"]').checked
+        }
     };
 
     ['labels', 'milestone', 'assignees', 'everhour'].forEach(name => {
@@ -17,7 +21,7 @@ const save = function() {
         });
     });
 
-    chrome.storage.sync.set(settings);
+    gcbStorage.set(settings);
 
     return false;
 };
@@ -51,18 +55,13 @@ const addHighlightItem = (color, filter) => {
     return false;
 };
 
-chrome.storage.sync.get(function(settings) {
-    settings = Object.assign({
-        compact: ['labels', 'milestone', 'everhour'],
-        highlight: [
-            {color: '#f9e6e6', filter: 'label:SUPPORT'},
-            {color: '#e6f3f9', filter: 'label:FTR'},
-        ]
-    }, settings);
-
+gcbStorage.get().then(settings => {
     settings.compact.forEach(name => {
         document.querySelector('input[name="hide-' + name + '"]').checked = true;
     });
+
+    document.querySelector('input[name="issue-show-pulls"]').checked = settings.issue.showPulls;
+    document.querySelector('input[name="issue-hide-log"]').checked = settings.issue.hideLog;
 
     document.querySelectorAll('input').forEach(input => input.addEventListener('change', () => save()));
 
