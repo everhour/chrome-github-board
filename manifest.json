@@ -26,6 +26,18 @@
             "css": [
                 "src/github-kanban.css"
             ]
+        },
+        {
+            "matches": [
+                "https://github.com/*/issues/*"
+            ],
+            "js": [
+                "lib/dom-observer.js",
+                "src/github-issue.js"
+            ],
+            "css": [
+                "src/github-issue.css"
+            ]
         }
     ],
     "web_accessible_resources": [

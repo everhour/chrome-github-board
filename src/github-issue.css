@@ -1,0 +1,20 @@
+.ghci-on .discussion-item {
+    display: none
+}
+
+.ghci-off .ghci-pull-requests {
+    display: none;
+}
+
+.ghci-on .ghci-pull-requests {
+    display: block;
+    padding-bottom: 24px;
+}
+
+.ghci-pull-requests a {
+    font-weight: 600;
+}
+
+.ghci-pull-requests-title {
+    font-size: 18px;
+}
