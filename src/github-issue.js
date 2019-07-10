@@ -25,9 +25,11 @@ gcbStorage.get().then(settings => {
                     const matches = url.match(/\/([^\/]*?)\/pull\/(\d+)/);
 
                     let parent = link.parentElement.parentElement;
-                    if (parent.classList.contains('.discussion-item-header')) {
+                    if (parent.classList.contains('discussion-item-header')) {
                         parent = parent.parentElement;
                     }
+
+                    console.log(url, parent);
 
                     const isOpen = !!parent.querySelector('.State.State--green');
 
