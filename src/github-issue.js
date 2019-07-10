@@ -23,7 +23,13 @@ gcbStorage.get().then(settings => {
                 .map(link => {
                     const url = link.getAttribute('href');
                     const matches = url.match(/\/([^\/]*?)\/pull\/(\d+)/);
-                    const isOpen = !!link.parentElement.parentElement.querySelector('.State.State--green');
+
+                    let parent = link.parentElement.parentElement;
+                    if (parent.classList.contains('.discussion-item-header')) {
+                        parent = parent.parentElement;
+                    }
+
+                    const isOpen = !!parent.querySelector('.State.State--green');
 
                     return {
                         url,
