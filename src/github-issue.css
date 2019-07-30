@@ -1,5 +1,5 @@
-.ghci-show-pulls .gh-header-meta .TableObject-item--primary,
-.ghci-show-pulls .sticky-content .meta {
+.ghci-show-pulls .gh-header:not(.js-pull-header-details) .gh-header-meta .TableObject-item--primary,
+.ghci-show-pulls .gh-header:not(.js-pull-header-details) .sticky-content .meta {
     display: none !important;
 }
 
