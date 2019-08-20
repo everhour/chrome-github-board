@@ -17,9 +17,9 @@ gcbStorage.get().then(settings => {
     }
 
     if (settings.issue.showPulls) {
-        observeChanges('h4 a[data-hovercard-type="pull_request"]', () => {
+        observeChanges('.TimelineItem a[data-hovercard-type="pull_request"]', () => {
             const html = Array
-                .from(document.querySelectorAll('h4 a[data-hovercard-type="pull_request"]'))
+                .from(document.querySelectorAll('.TimelineItem a[data-hovercard-type="pull_request"]'))
                 .map(link => {
                     const url = link.getAttribute('href');
                     const matches = url.match(/\/([^\/]*?)\/pull\/(\d+)/);
@@ -28,8 +28,6 @@ gcbStorage.get().then(settings => {
                     if (parent.classList.contains('discussion-item-header')) {
                         parent = parent.parentElement;
                     }
-
-                    console.log(url, parent);
 
                     const isOpen = !!parent.querySelector('.State.State--green');
 
