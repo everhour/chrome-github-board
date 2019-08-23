@@ -2,7 +2,7 @@
     "name": "GitHub Compacted",
     "short_name": "GitHub Compacted",
     "description": "Provides compact view to your GitHub boards and issues.",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "homepage_url": "https://github.com/everhour/chrome-github-board",
     "icons": {
         "128": "logo.png"
