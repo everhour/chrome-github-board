@@ -16,6 +16,18 @@ gcbStorage.get().then(settings => {
         });
     }
 
+    if (settings.issue.hideLog) {
+        observeChanges('.TimelineItem', () => {
+            Array
+                .from(document.querySelectorAll('.TimelineItem'))
+                .forEach((item) => {
+                    if (item.querySelectorAll('a[data-hovercard-type="pull_request"]').length === 0) {
+                        item.style.display = 'none';
+                    }
+                });
+        })
+    }
+
     if (settings.issue.showPulls) {
         observeChanges('.TimelineItem a[data-hovercard-type="pull_request"]', () => {
             const html = Array
