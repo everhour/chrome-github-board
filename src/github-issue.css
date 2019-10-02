@@ -3,7 +3,7 @@
     display: none !important;
 }
 
-.ghci-hide-logs .discussion-item {
+.ghci-hide-logs .TimelineItem:not(*[data-url]) {
     display: none !important;
 }
 
