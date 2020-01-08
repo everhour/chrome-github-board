@@ -56,6 +56,16 @@ gcbStorage.get().then(settings => {
             }
         });
     }
+
+    if (settings.issue.parseZpl) {
+        observeChanges('.TimelineItem blockquote', () => {
+            document
+                .querySelectorAll('.TimelineItem blockquote')
+                .forEach(blockquote => {
+                    blockquote.innerHTML = blockquote.innerHTML.replace(/([^"])(zpl:\/\/[0-9a-z?=&;]*)/g, '$1<a href="$2">goto:zeplin</a>');
+                });
+        });
+    }
 });
 
 const renderElement = (className, html, create) => {
