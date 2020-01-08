@@ -4,7 +4,8 @@ const save = function() {
         highlight: [],
         issue: {
             showPulls: document.querySelector('input[name="issue-show-pulls"]').checked,
-            hideLog: document.querySelector('input[name="issue-hide-log"]').checked
+            hideLog: document.querySelector('input[name="issue-hide-log"]').checked,
+            parseZpl: document.querySelector('input[name="issue-parse-zpl"]').checked
         }
     };
 
@@ -62,6 +63,7 @@ gcbStorage.get().then(settings => {
 
     document.querySelector('input[name="issue-show-pulls"]').checked = settings.issue.showPulls;
     document.querySelector('input[name="issue-hide-log"]').checked = settings.issue.hideLog;
+    document.querySelector('input[name="issue-parse-zpl"]').checked = settings.issue.parseZpl;
 
     document.querySelectorAll('input').forEach(input => input.addEventListener('change', () => save()));
 
