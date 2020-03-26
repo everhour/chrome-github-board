@@ -88,3 +88,40 @@
 .ghcb-switcher {
     margin-right: 16px;
 }
+
+.ghcb-on .everhour-list-stat.everhour-list-card {
+    background: #aaa !important;
+    border-radius: 8px;
+    color: #fff !important;
+    margin: 0 !important;
+    position: absolute;
+    right: 33px;
+    top: 11px;
+    padding: 0 4px !important;
+    font-size: 10px !important;
+    height: 15px !important;
+    z-index: 9999 !important;
+    opacity: 0.9;
+}
+
+.ghcb-on .everhour-list-stat.everhour-list-card.everhour-overtime {
+    color: #fff !important;
+    background: #FB7379 !important;
+}
+
+
+.ghcb-on .everhour-list-stat.everhour-list-card.everhour-warn {
+    color: #fff !important;
+    background: #fbca2d !important;
+}
+.ghcb-on .everhour-list-stat.everhour-list-card .button {
+    display: none;
+}
+
+.ghcb-on .card-menu-container {
+    display: none;
+}
+
+.ghcb-on .AvatarStack {
+    top: 8px !important;
+}

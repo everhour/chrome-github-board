@@ -52,4 +52,36 @@ gcbStorage.get().then(settings => {
 
         controls.insertBefore(switcher, controls.firstChild);
     });
+
+    const convertTime = timeElement => {
+        if (!timeElement) {
+            return;
+        }
+
+        if (!timeElement.classList.contains('everhour-item-time')) {
+            timeElement = timeElement.querySelector('.everhour-item-time');
+        }
+
+        if (!timeElement) {
+            return;
+        }
+
+        let time = timeElement.innerText;
+        time = time.replace(/\d+m/g, '').replace(/h/g, '').replace(/\s+of\s+/g, '/').trim();
+
+        if (time.length === 0) {
+            timeElement.parentElement.remove();
+            return;
+        }
+
+        [timeValue, estimateValue] = time.split('/');
+
+        if (!estimateValue && parseInt(timeValue) > 40) {
+            timeElement.parentElement.classList.add('everhour-warn');
+        }
+
+        timeElement.innerText = time;
+    };
+
+    observeChanges('.everhour-item-time', convertTime);
 });
